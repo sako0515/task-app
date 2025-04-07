@@ -18,21 +18,7 @@ export default function Home() {
       { id: Date.now(), title: newTask, status: "ToDo" },
     ]);
     setNewTask("");
-  }, [newTask]);
-
-  const taskStatus = useCallback(() => {
-    setTasks((prevTasks) =>
-      prevTasks.map((task) => {
-        if (task.status === "ToDo") {
-          return { ...task, status: "InProgress" };
-        } else if (task.status === "InProgress") {
-          return { ...task, status: "Done" };
-        } else {
-          return task;
-        }
-      })
-    );
-  }, [ tasks ]);
+  }, [newTask]); 
 
   return (
     <div>
@@ -43,7 +29,18 @@ export default function Home() {
         {tasks.map((task) => (
           <li key={task.id}>
             <div>{task.title}</div>
-            <select value={task.status} onChange={taskStatus}>
+            <select
+              value={task.status}
+              onChange={(e) =>
+                setTasks(
+                  tasks.map((t) =>
+                    t.id === task.id
+                      ? { ...t, status: e.target.value as Task["status"] }
+                      : t
+                  )
+                )
+              }
+            >
               <option value="ToDo">ToDo</option>
               <option value="InProgress">In Progress</option>
               <option value="Done">Done</option>
