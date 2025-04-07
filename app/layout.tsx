@@ -1,3 +1,5 @@
+import { ReactNode } from 'react';
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -5,7 +7,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ja">
-      <body>{children}</body>
+      <body>
+        <header>タスク管理アプリ</header>
+        <main>{children}</main>
+      </body>
     </html>
   );
 }
