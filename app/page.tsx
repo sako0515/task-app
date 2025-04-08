@@ -28,6 +28,10 @@ export default function Home() {
     );
   }, []);
 
+  const deleteTask = (id: number) => {
+    setTasks(tasks.filter((task) => task.id !== id));
+  };
+
   return (
     <div className="flex flex-col bg-slate-200 rounded-lg">
       <h1 className="m-[16px] font-bold">Todoリスト</h1>
@@ -49,6 +53,7 @@ export default function Home() {
                 <option value="Done">Done</option>
               </select>
               <div>{task.title}</div>
+              <button onClick={() => deleteTask(task.id)} className="text-red-500 ml-2">削除</button>
             </li>
           ))}
       </ul>
