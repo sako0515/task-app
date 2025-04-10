@@ -1,5 +1,3 @@
-import "./globals.css";
-
 export function Sidebar() {
   return (
     <nav className="text-xs font-bold w-64 bg-gray-100 min-h-screen p-4 hidden md:block">
