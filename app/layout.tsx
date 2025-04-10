@@ -11,8 +11,8 @@ export default function RootLayout({
         <header className="bg-white shadow p-4">
           <h1 className="text-xl font-bold">タスク管理アプリ</h1>
         </header>
-        <div className="flex">
-          <aside className="w-40 bg-gray-200 p-4 hidden md:block">
+        <div className="flex ">
+          <aside className="w-40 bg-gray-100 min-h-screen p-4 hidden md:block">
             <nav>
               <ul className="space-y-2">
                 <li className="hover:bg-gray-300 p-2 rounded">メニュー1</li>
