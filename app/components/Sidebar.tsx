@@ -1,4 +1,4 @@
-import { Calendar, Home, Inbox, Plus, Search, Settings } from "lucide-react";
+import { Calendar, Home, Inbox, MoreHorizontal, Plus, Search, Settings } from "lucide-react";
 
 import {
   Sidebar,
@@ -9,9 +9,11 @@ import {
   SidebarGroupLabel,
   SidebarHeader,
   SidebarMenu,
+  SidebarMenuAction,
   SidebarMenuButton,
   SidebarMenuItem,
 } from "@/components/ui/sidebar";
+import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@radix-ui/react-dropdown-menu";
 
 const items = [
   {
@@ -60,6 +62,21 @@ export function AppSidebar() {
                       <span>{item.title}</span>
                     </a>
                   </SidebarMenuButton>
+                  <DropdownMenu>
+                    <DropdownMenuTrigger asChild>
+                      <SidebarMenuAction>
+                        <MoreHorizontal />
+                      </SidebarMenuAction>
+                    </DropdownMenuTrigger>
+                    <DropdownMenuContent side="right" align="start">
+                      <DropdownMenuItem>
+                        <span>Edit Project</span>
+                      </DropdownMenuItem>
+                      <DropdownMenuItem>
+                        <span>Delete Project</span>
+                      </DropdownMenuItem>
+                    </DropdownMenuContent>
+                  </DropdownMenu>
                 </SidebarMenuItem>
               ))}
             </SidebarMenu>
