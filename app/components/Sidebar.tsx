@@ -1,4 +1,13 @@
-import { Calendar, Home, Inbox, MoreHorizontal, Plus, Search, Settings } from "lucide-react";
+import {
+  Calendar,
+  ChevronDown,
+  Home,
+  Inbox,
+  MoreHorizontal,
+  Plus,
+  Search,
+  Settings,
+} from "lucide-react";
 
 import {
   Sidebar,
@@ -13,7 +22,12 @@ import {
   SidebarMenuButton,
   SidebarMenuItem,
 } from "@/components/ui/sidebar";
-import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@radix-ui/react-dropdown-menu";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@radix-ui/react-dropdown-menu";
 
 const items = [
   {
@@ -45,13 +59,31 @@ const items = [
 
 export function AppSidebar() {
   return (
-    <Sidebar collapsible="icon">
+    <Sidebar>
       <SidebarContent>
         <SidebarGroup>
-          <SidebarGroupLabel>Projects</SidebarGroupLabel>
-          <SidebarGroupAction title="Add Projects">
-            <Plus /> <span className="sr-only">Add Projects</span>
-          </SidebarGroupAction>
+          <SidebarHeader>
+            <SidebarMenu>
+              <SidebarMenuItem>
+                <DropdownMenu>
+                  <DropdownMenuTrigger asChild>
+                    <SidebarMenuButton>
+                      Select Workspace
+                      <ChevronDown className="ml-auto" />
+                    </SidebarMenuButton>
+                  </DropdownMenuTrigger>
+                  <DropdownMenuContent className="w-[--radix-popper-anchor-width]">
+                    <DropdownMenuItem>
+                      <span>Acme Inc</span>
+                    </DropdownMenuItem>
+                    <DropdownMenuItem>
+                      <span>Acme Corp.</span>
+                    </DropdownMenuItem>
+                  </DropdownMenuContent>
+                </DropdownMenu>
+              </SidebarMenuItem>
+            </SidebarMenu>
+          </SidebarHeader>
           <SidebarGroupContent>
             <SidebarMenu>
               {items.map((item) => (
