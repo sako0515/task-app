@@ -1,15 +1,17 @@
-import { Calendar, Home, Inbox, Search, Settings } from "lucide-react"
+import { Calendar, Home, Inbox, Plus, Search, Settings } from "lucide-react";
 
 import {
   Sidebar,
   SidebarContent,
   SidebarGroup,
+  SidebarGroupAction,
   SidebarGroupContent,
   SidebarGroupLabel,
+  SidebarHeader,
   SidebarMenu,
   SidebarMenuButton,
   SidebarMenuItem,
-} from "@/components/ui/sidebar"
+} from "@/components/ui/sidebar";
 
 const items = [
   {
@@ -37,14 +39,17 @@ const items = [
     url: "#",
     icon: Settings,
   },
-]
+];
 
 export function AppSidebar() {
   return (
-    <Sidebar>
+    <Sidebar collapsible="icon">
       <SidebarContent>
         <SidebarGroup>
-          <SidebarGroupLabel>主な機能</SidebarGroupLabel>
+          <SidebarGroupLabel>Projects</SidebarGroupLabel>
+          <SidebarGroupAction title="Add Projects">
+            <Plus /> <span className="sr-only">Add Projects</span>
+          </SidebarGroupAction>
           <SidebarGroupContent>
             <SidebarMenu>
               {items.map((item) => (
@@ -62,5 +67,5 @@ export function AppSidebar() {
         </SidebarGroup>
       </SidebarContent>
     </Sidebar>
-  )
+  );
 }
