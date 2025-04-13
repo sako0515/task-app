@@ -1,19 +1,14 @@
 import {
   Calendar,
-  ChevronDown,
   Home,
-  Inbox,
+  ListTodo,
   MoreHorizontal,
-  Plus,
-  Search,
-  Settings,
 } from "lucide-react";
 
 import {
   Sidebar,
   SidebarContent,
   SidebarGroup,
-  SidebarGroupAction,
   SidebarGroupContent,
   SidebarGroupLabel,
   SidebarHeader,
@@ -32,57 +27,28 @@ import {
 const items = [
   {
     title: "ホーム",
-    url: "#",
+    url: "/",
     icon: Home,
   },
   {
-    title: "受信トレイ",
-    url: "#",
-    icon: Inbox,
-  },
-  {
     title: "カレンダー",
-    url: "#",
+    url: "/calendar",
     icon: Calendar,
   },
   {
-    title: "検索",
-    url: "#",
-    icon: Search,
-  },
-  {
-    title: "設定",
-    url: "#",
-    icon: Settings,
+    title: "Todoリスト",
+    url: "/todos",
+    icon: ListTodo,
   },
 ];
 
-export function AppSidebar() {
+export const AppSidebar = () => {
   return (
-    <Sidebar>
+    <Sidebar collapsible="icon">
       <SidebarContent>
         <SidebarGroup>
           <SidebarHeader>
-            <SidebarMenu>
-              <SidebarMenuItem>
-                <DropdownMenu>
-                  <DropdownMenuTrigger asChild>
-                    <SidebarMenuButton>
-                      Select Workspace
-                      <ChevronDown className="ml-auto" />
-                    </SidebarMenuButton>
-                  </DropdownMenuTrigger>
-                  <DropdownMenuContent className="w-[--radix-popper-anchor-width]">
-                    <DropdownMenuItem>
-                      <span>Acme Inc</span>
-                    </DropdownMenuItem>
-                    <DropdownMenuItem>
-                      <span>Acme Corp.</span>
-                    </DropdownMenuItem>
-                  </DropdownMenuContent>
-                </DropdownMenu>
-              </SidebarMenuItem>
-            </SidebarMenu>
+            <SidebarGroupLabel>プロジェクト</SidebarGroupLabel>
           </SidebarHeader>
           <SidebarGroupContent>
             <SidebarMenu>
