@@ -1,5 +1,5 @@
 "use client";
-import { Home, ListTodo, Plus } from "lucide-react";
+import { Plus } from "lucide-react";
 import {
   Sidebar,
   SidebarContent,
@@ -13,13 +13,11 @@ import {
 } from "@/components/ui/sidebar";
 
 import Link from "next/link";
-
-const ITEMS = [
-  { title: "ホーム", icon: <Home />, path: "/" },
-  { title: "タスクリスト", icon: <ListTodo />, path: "/tasks" },
-];
+import { useSidebarState } from "../hooks/useSidebarState";
 
 export const AppSidebar = () => {
+  const { items, handleAdd } = useSidebarState();
+
   return (
     <Sidebar collapsible="icon">
       <SidebarContent>
@@ -27,7 +25,7 @@ export const AppSidebar = () => {
           <SidebarGroupLabel>ボード</SidebarGroupLabel>
           <SidebarGroupContent>
             <SidebarMenu>
-              {ITEMS.map((item) => (
+              {items.map((item) => (
                 <SidebarMenuItem key={item.title}>
                   <SidebarMenuButton asChild>
                     <Link href={item.path}>
@@ -36,7 +34,7 @@ export const AppSidebar = () => {
                     </Link>
                   </SidebarMenuButton>
                   {item.title === "タスクリスト" && (
-                    <SidebarMenuAction>
+                    <SidebarMenuAction onClick={handleAdd}>
                       <Plus />
                     </SidebarMenuAction>
                   )}
