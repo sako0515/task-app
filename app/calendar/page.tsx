@@ -1,9 +1,0 @@
-export default function Calendar() {
-  return (
-    <div className="p-4">
-      <h1 className="text-2xl font-bold text-gray-800">
-        カレンダー
-      </h1>
-    </div>
-  );
-}
